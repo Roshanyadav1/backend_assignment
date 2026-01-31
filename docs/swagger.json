@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "description": "API for managing personal details and geocoding."
   },
-  "servers": [{ "url": "http://localhost:3000" }],
+  "servers": [{ "url": "https://backend-assignment-jht6.onrender.com" }],
   "paths": {
     "/api/personal-details": {
       "post": {
