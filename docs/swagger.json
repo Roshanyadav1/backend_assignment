@@ -1,0 +1,58 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Personal Details API",
+    "version": "1.0.0",
+    "description": "API for managing personal details and geocoding."
+  },
+  "servers": [{ "url": "http://localhost:3000" }],
+  "paths": {
+    "/api/personal-details": {
+      "post": {
+        "summary": "Store personal details",
+        "tags": ["Personal Details"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "age": { "type": "integer" },
+                  "mobile_number": { "type": "string" },
+                  "address": { "type": "string" },
+                  "location_name": { "type": "string" },
+                  "department": { "type": "string" },
+                  "role": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Created successfully" } }
+      },
+      "get": {
+        "summary": "Search personal details",
+        "tags": ["Personal Details"],
+        "parameters": [
+          { "in": "query", "name": "name", "schema": { "type": "string" } },
+          { "in": "query", "name": "location_name", "schema": { "type": "string" } },
+          { "in": "header", "name": "x-role", "schema": { "type": "string" }, "description": "Set to \"admin\" to see full details" }
+        ],
+        "responses": { "200": { "description": "Success" } }
+      }
+    },
+    "/api/get-address": {
+      "get": {
+        "summary": "Get address from Lat/Lon",
+        "tags": ["Geocoding"],
+        "parameters": [
+          { "in": "query", "name": "lat", "required": true, "schema": { "type": "string" } },
+          { "in": "query", "name": "lon", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": { "200": { "description": "Success" } }
+      }
+    }
+  }
+}
