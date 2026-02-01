@@ -8,8 +8,7 @@ A production-ready backend service built with **Node.js** and **Express**, featu
 ---
 
 ## 📍 Live Deployment
-The project is live at: [https://backend-assignment-jht6.onrender.com/api-docs/#/](https://backend-assignment-jht6.onrender.com/api-docs/#/)
-> **Note:** Access the interactive documentation at `/api-docs`.
+The project docs is live at: [https://backend-assignment-jht6.onrender.com/api-docs/#/](https://backend-assignment-jht6.onrender.com/api-docs/#/)
 
 ---
 
@@ -26,3 +25,4 @@ The project is organized using a professional architecture to ensure the code is
 ├── server.js           # Main application entry point
 └── README.md           # Project documentation
 ```
+
