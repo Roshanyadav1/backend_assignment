@@ -35,10 +35,12 @@
       "get": {
         "summary": "Search personal details",
         "tags": ["Personal Details"],
-        "parameters": [
-          { "in": "query", "name": "name", "schema": { "type": "string" } },
-          { "in": "query", "name": "location_name", "schema": { "type": "string" } },
-          { "in": "header", "name": "x-role", "schema": { "type": "string" }, "description": "Set to \"admin\" to see full details" }
+     "parameters": [
+          { "in": "query", "name": "name", "schema": { "type": "string" }, "description": "Filter by name" },
+          { "in": "query", "name": "location_name", "schema": { "type": "string" }, "description": "Filter by location" },
+          { "in": "query", "name": "department", "schema": { "type": "string" }, "description": "Filter by department" },
+          { "in": "query", "name": "role", "schema": { "type": "string" }, "description": "Filter by role" },
+          { "in": "header", "name": "x-role", "schema": { "type": "string" }, "description": "Set to 'admin' to unmask sensitive fields" }
         ],
         "responses": { "200": { "description": "Success" } }
       }

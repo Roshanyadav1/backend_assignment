@@ -21,6 +21,9 @@ exports.getPeople = async (req, res) => {
     let query = supabase.from('personal_details').select('*');
     if (name) query = query.ilike('name', `%${name}%`);
     if (location_name) query = query.ilike('location_name', `%${location_name}%`);
+    if (department) query = query.eq('department', department);
+    if (role) query = query.eq('role', role);
+
 
     const { data, error } = await query;
     if (error) throw error;
