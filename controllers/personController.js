@@ -15,22 +15,23 @@ exports.createPerson = async (req, res) => {
 
 exports.getPeople = async (req, res) => {
   try {
-    const { name, location_name } = req.query;
-    const isAdmin = req.headers['x-role'] === 'admin';
+    const { name, location_name, department, role } = req.query;
     
+    const isAdmin = req.headers['x-role'] === 'admin';
     let query = supabase.from('personal_details').select('*');
+
     if (name) query = query.ilike('name', `%${name}%`);
     if (location_name) query = query.ilike('location_name', `%${location_name}%`);
+    
     if (department) query = query.eq('department', department);
     if (role) query = query.eq('role', role);
-
 
     const { data, error } = await query;
     if (error) throw error;
 
-    // Apply Privacy Rules
     const results = data.map(p => isAdmin ? p : { ...p, mobile_number: 'RESTRICTED', address: 'RESTRICTED' });
-    res.json({ status: 'success', data: results });
+    
+    res.json({ status: 'success', results: results.length, data: results });
   } catch (err) {
     res.status(500).json({ status: 'error', message: err.message });
   }
